@@ -144,6 +144,11 @@
   <ItemGroup>
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AlgorithmParameters.hpp" />
+    <ClInclude Include="Executor.hpp" />
+    <ClInclude Include="SilhouetteCoefficient.hpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
