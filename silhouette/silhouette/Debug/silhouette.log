@@ -1,0 +1,4 @@
+﻿  Source.cpp
+c:\users\anna\desktop\study\clustering\silhouette coefficient\silhouette\silhouette\source.cpp(370): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+c:\users\anna\desktop\study\clustering\silhouette coefficient\silhouette\silhouette\source.cpp(379): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  silhouette.vcxproj -> C:\Users\Anna\Desktop\Study\Clustering\silhouette coefficient\silhouette\Debug\silhouette.exe
