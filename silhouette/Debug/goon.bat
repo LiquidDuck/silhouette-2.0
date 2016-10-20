@@ -1,1 +1,1 @@
-silhouette.exe -i input.csv -r results.csv -o output.csv -c 3 -n 1300 -d 3
+silhouette.exe -i input.csv -r results.csv -o output.csv -c 3 -n 13 -d 3
