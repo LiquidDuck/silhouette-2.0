@@ -7,11 +7,9 @@ public:
 	SilhouetteCoefficient(Parameters _parameters, int* _clusteringResults, double* _objects)
 	{
 		parameters = _parameters; 
-		
 		clusteringResults = _clusteringResults;
-		/*writeArray(clusteringResults, parameters.countOfObjects);*/
 		objects = _objects;
-		/*writeArray(objects, parameters.countOfObjects);*/
+
 		centroids = new double[parameters.countOfClusters*parameters.countOfDimensions];
 		clusters = new double[parameters.countOfObjects*parameters.countOfDimensions];
 		cSizes = new int[parameters.countOfClusters];
@@ -138,6 +136,7 @@ private:
 			}
 		}
 	}
+
 	int* calculateNearestClusters()
 	{
 		
@@ -204,6 +203,7 @@ private:
 		}
 		delete[]cluster;
 	}
+
 	void writeArray(double* arr, int size)
 	{
 		for (int i = 0; i < size; i++)

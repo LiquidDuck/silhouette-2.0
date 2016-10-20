@@ -23,20 +23,20 @@ public:
 		double* objects = new double[parameters.countOfObjects*parameters.countOfDimensions];
 		int* clusteringResults = new int[parameters.countOfObjects];
 
-		cout << "before fuzzy" << endl;
-		/*if (isFuzzy(file))
+		if (isFuzzy())
 		{
-			cout << "fuzzy" << endl;*/
-			readFuzzyResults(clusteringResults/*, file)*/);
-		/*}
+			cout << "fuzzy" << endl;
+			readFuzzyResults(clusteringResults);
+			writeArray(clusteringResults, parameters.countOfObjects);
+			readObjects(objects);
+			cout << "obje" << endl;
+			writeArray(objects, parameters.countOfObjects);
+		}
 		else
 		{
 			cout << "not fuzzy" << endl;
 			exit(1);
-		}*/
-		readObjects(objects); 
-		/*writeArray(objects);*/
-		/*writeArray(objects, parameters.countOfObjects);*/
+		}
 		SilhouetteCoefficient silhouette(parameters, clusteringResults, objects); 
 		writeResult(silhouette.calculateSilhouette()); 
 	}
@@ -55,101 +55,81 @@ private:
 			cout << endl;
 		}
 	}
-	void readObjects(double* objects)
+
+	void writeArray(int* arr, int size)
 	{
-		ifstream infile(parameters.inputPath);
-		int i = -1;
-
-		while (infile)
+		for (int i = 0; i < size; i++)
 		{
-			
-			string s;
-			if (!getline(infile, s)) break;
-
-			istringstream ss(s);
-			double* record = new double[parameters.countOfDimensions];
-			int d = -1;
-
-			while (ss)
-			{
-				string s;
-				double p;
-
-				if (!getline(ss, s, ';'))
-				{
-					break;
-				}
-
-				istringstream iss(s);
-				iss >> p;
-
-				d++; 
-				record[d] = p;
-			}
-			
-			for (int j = 0; j < parameters.countOfDimensions; j++)
-			{
-				i++;
-				objects[i] = record[j];
-			}
+			cout << arr[i] << endl;			
 		}
-		infile.close();
 	}
-	void readFuzzyResults(int* clusteringResults/*, ifstream &infile*/)
+
+	void readObjects(double* objects)
 	{
 		ifstream infile(parameters.clusteringResultsPath);
 		infile.seekg(0, infile.beg);
 
-		string s;
-		double d;
-		int o = -1;
-		char semicolon;
-		cout << "pre-while" << endl;
-		cout << infile.good() << endl;
-		while (infile)
+		int rowIndex = 0;
+		long long elementN = 0;
+		while (infile && rowIndex<parameters.countOfObjects)
 		{
-			cout << "yes" << endl;
-			getline(infile, s);
-			istringstream iss(s);
+			string rowString;
+			if (!getline(infile, rowString)) break;
 
-			double maxRes = -1;
-			int num = -1;
-			int maxNum = 0;
-
-			while (iss)
+			istringstream ss(rowString);
+			int coordIndex = 0;
+			while (ss && coordIndex<parameters.countOfClusters)
 			{
-				iss >> d;
-				iss >> semicolon;
-				num++;
-				if (d > maxRes)
+
+				string coordString;
+				double p;
+				if (!getline(ss, coordString, ';')) break;
+
+				istringstream iss(coordString);
+				if (iss >> p)
 				{
-					maxRes = d;
-					maxNum = num;
+					objects[elementN] = p;
+					coordIndex++;
+					elementN++;
 				}
 			}
-
-			o++;
-			cout << maxNum << endl;
-			clusteringResults[o] = maxNum;
+			rowIndex++;
 		}
-		/*else
+		infile.close();
+	}
+	void readFuzzyResults(int* clusteringResults)
+	{
+		ifstream infile(parameters.clusteringResultsPath);
+		infile.seekg(0, infile.beg);
+		
+		int rowIndex = 0;
+		while (infile && rowIndex<parameters.countOfObjects)
 		{
-			cout << "chet" << endl;
-			o++;
-			istringstream ss(s);
-			ss >> d;
-			clusteringResults[o] = d - 1;
+			string rowString;
+			if (!getline(infile, rowString)) break;
 
-			while (infile)
+			istringstream ss(rowString);
+
+			int currentCluster = 0;
+			clusteringResults[rowIndex] = 0;
+			double maxProbability = 0;
+
+			while (ss && currentCluster<parameters.countOfClusters)
 			{
-				getline(infile, s);
-				istringstream iss(s);
-				iss >> d;
 
-				o++;
-				clusteringResults[o] = d - 1;
+				string coordString;
+				double p;
+				if (!getline(ss, coordString, ';')) break;
+
+				istringstream iss(coordString);
+				if (iss >> p)
+				{
+					if (p > maxProbability) { maxProbability = p; clusteringResults[rowIndex] = currentCluster; }
+					currentCluster++;
+				}
 			}
-		}*/
+			rowIndex++;
+		}
 		infile.close();
 	}
 	void writeResult(double S)
@@ -158,15 +138,14 @@ private:
 		outfile << S;
 		outfile.close();
 	}
-	bool isFuzzy(ifstream &file)
+
+	bool isFuzzy()
 	{
-		/*ifstream infile(parameters.clusteringResultsPath);*/
-
+		ifstream infile(parameters.clusteringResultsPath);
 		string s;
-		getline(file, s);
-		file.close();
-		/*infile.clear();*/
-
+		getline(infile, s);
+		cout << parameters.clusteringResultsPath <<"__"<<s << endl;
+		infile.close();
 		return s.find(";");
 	}
 };
