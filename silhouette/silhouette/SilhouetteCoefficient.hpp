@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 class SilhouetteCoefficient
 {
@@ -23,20 +24,13 @@ public:
 
 	double calculateSilhouette()
 	{
-		calculateCentroids();
 		orderClusters();
-		/*writeArray(centroids, parameters.countOfClusters);
-		writeArray(clusters, parameters.countOfObjects);*/
-		return 0;
+		calculateCentroids();
 
 		int o = -1;
-		double S = 0; 
-		cout << "3" << endl;
-		cout << parameters.countOfObjects << endl;
-		cout << "4" << endl;
+		double S = 0;
 		int* nearestClusters = calculateNearestClusters();
 		
-		cout << parameters.countOfObjects << endl;
 		for (int c = 0; c < parameters.countOfClusters; c++)
 		{
 			int pcSizes = 0;
@@ -70,7 +64,7 @@ public:
 				interclusterAvg[o] = iAvg / cSizes[nearestClusters[c]];
 			}
 		}
-		cout << "5" << endl;
+
 		for (int o = 0; o < parameters.countOfObjects; o++)
 		{
 			double max = localAvg[o] > interclusterAvg[o] ? localAvg[o] : interclusterAvg[o];
@@ -102,73 +96,10 @@ private:
 
 		return sqrt(sum);
 	}
-	void calculateCentroids()
-	{
-		double* centroid = new double[parameters.countOfDimensions];
-
-		for (int c = 0; c < parameters.countOfClusters; c++)
-		{
-			int pcSizes = 0;
-			for (int pc = 0; pc < c; pc++)
-			{
-				pcSizes += cSizes[pc] * parameters.countOfDimensions;
-			}
-
-			for (int d = 0; d < parameters.countOfDimensions; d++)
-			{
-				centroid[d] = 0;
-			}
-
-			for (int o = 0; o < cSizes[c]; o++)
-			{
-				for (int d = 0; d < parameters.countOfDimensions; d++)
-				{
-					centroid[d] += clusters[pcSizes + o*parameters.countOfDimensions + d];
-				}
-			}
-
-			if (cSizes[c] > 0)
-			{
-				for (int d = 0; d < parameters.countOfDimensions; d++)
-				{
-					centroids[c*parameters.countOfDimensions + d] = centroid[d] / cSizes[c];
-				}
-			}
-		}
-	}
-
-	int* calculateNearestClusters()
-	{
-		
-		int* nearestClusters = new int[parameters.countOfClusters];
-		
-		for (int c = 0; c < parameters.countOfClusters; c++)
-		{
-			int minNum = -1;
-			double minDis = -1;
-
-			for (int n = 0; n < parameters.countOfClusters; n++)
-			{
-				if (c != n && cSizes[n] > 0)
-				{
-					double dis = evklidDistance(centroids, c*parameters.countOfDimensions, centroids, n*parameters.countOfDimensions);
-					
-					if (dis < minDis || minNum < 0)
-					{
-						minDis = dis;
-						minNum = n;
-					}
-				}
-			}
-			
-			nearestClusters[c] = minNum;
-		}
-
-		return nearestClusters;
-	}
 	void orderClusters()
 	{
-		double* cluster = new double[parameters.countOfObjects];
+		int elementIndex = 0;
+
 		for (int c = 0; c < parameters.countOfClusters; c++)
 		{
 			int objectsInCluster = 0;
@@ -179,47 +110,103 @@ private:
 				{
 					for (int d = 0; d < parameters.countOfDimensions; d++)
 					{
-						cluster[objectsInCluster*parameters.countOfDimensions + d] = objects[o*parameters.countOfDimensions + d];
+						clusters[elementIndex] = objects[o*parameters.countOfDimensions + d];
+						elementIndex++;
 					}
 					objectsInCluster++;
 				}
 			}
-
+			cSizes[c] = objectsInCluster;
+		}
+	}
+	void calculateCentroids()
+	{
+		for (int i = 0; i < parameters.countOfClusters*parameters.countOfDimensions; i++)
+		{
+			centroids[i] = 0;
+		}
+		
+		for (int c = 0; c < parameters.countOfClusters; c++)
+		{
 			int pcSizes = 0;
 			for (int pc = 0; pc < c; pc++)
 			{
 				pcSizes += cSizes[pc] * parameters.countOfDimensions;
 			}
 
-			for (int o = 0; o < objectsInCluster; o++)
+			for (int o = 0; o < cSizes[c]; o++)
 			{
 				for (int d = 0; d < parameters.countOfDimensions; d++)
 				{
-					clusters[pcSizes + o*parameters.countOfDimensions + d] = cluster[o*parameters.countOfDimensions + d];
+					if (cSizes[c] > 0)
+					{
+						centroids[c*parameters.countOfDimensions + d] += clusters[pcSizes + o*parameters.countOfDimensions + d] / cSizes[c];
+					}
+					else
+					{
+						centroids[c*parameters.countOfDimensions + d] = -1;
+					}
+				}
+			}
+		}
+	}
+	int* calculateNearestClusters()
+	{
+		int* nearestClusters = new int[parameters.countOfClusters];
+
+		for (int c = 0; c < parameters.countOfClusters; c++)
+		{
+			int minNum = -1;
+			double minDis = -1;
+
+			for (int n = 0; n < parameters.countOfClusters; n++)
+			{
+				if (c != n && cSizes[n] > 0)
+				{
+					double dis = evklidDistance(centroids, c*parameters.countOfDimensions, centroids, n*parameters.countOfDimensions);
+
+					if (dis < minDis || minNum < 0)
+					{
+						minDis = dis;
+						minNum = n;
+					}
 				}
 			}
 
-			cSizes[c] = objectsInCluster;
+			nearestClusters[c] = minNum;
 		}
-		delete[]cluster;
+
+		return nearestClusters;
 	}
 
-	void writeArray(double* arr, int size)
+	void writeArray(double* arr, int size, string name)
 	{
+		ofstream outfile(name + ".csv");
+
 		for (int i = 0; i < size; i++)
 		{
 			for (int j = 0; j < parameters.countOfDimensions; j++)
 			{
-				cout << arr[parameters.countOfDimensions*i + j] << " ";
+				outfile << arr[parameters.countOfDimensions*i + j];
+				if (j != parameters.countOfDimensions - 1)
+				{
+					outfile << ";";
+				}
 			}
-			cout << endl;
+			outfile << endl;
 		}
+
+		outfile.close();
 	}
-	void writeArray(int* arr, int size)
+	void writeArray(int* arr, int size, string name)
 	{
+		ofstream outfile(name + ".csv");
+
 		for (int i = 0; i < size; i++)
 		{
-			cout << arr[i] << endl;
+			outfile << arr[i] << endl;
 		}
+
+		outfile.close();
 	}
 };
