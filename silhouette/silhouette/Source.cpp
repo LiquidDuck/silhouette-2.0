@@ -10,7 +10,7 @@
 
 void main(int argc, char *argv[])
 {
-	AlgorithmParameters algorithmParameters(argc, argv); cout << "starting to get the parameters..." << endl;
+	AlgorithmParameters algorithmParameters(argc, argv); 
 	Executor executor(algorithmParameters.GetParameters());
 	executor.StartTesting();
 
