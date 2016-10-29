@@ -13,9 +13,8 @@ public:
 
 		centroids = new double[parameters.countOfClusters*parameters.countOfDimensions];
 		cSizes = new int[parameters.countOfClusters];
-		localAvg = new double[parameters.countOfObjects];
-		interclusterAvg = new double[parameters.countOfObjects];
 		nearestClusters = new int[parameters.countOfClusters];
+		distances = new double[parameters.countOfObjects*parameters.countOfObjects];
 	}
 	~SilhouetteCoefficient()
 	{
@@ -24,6 +23,7 @@ public:
 
 	double calculateSilhouette()
 	{
+		calculateDistanceMatrix();
 		calculateClustersSizes();
 		calculateCentroids();
 		calculateNearestClusters();
@@ -39,15 +39,15 @@ public:
 			{
 				if (clusteringResults[o2] == currentCluster)
 				{
-					localAvg += evklidDistance(objects, o1*parameters.countOfDimensions, objects, o2*parameters.countOfDimensions);
+					localAvg += distances[o1*parameters.countOfObjects + o2];
 				}
 				else
 					if (clusteringResults[o2] == nearestClusters[currentCluster])
 					{
-						interclusterAvg += evklidDistance(objects, o1*parameters.countOfDimensions, objects, o2*parameters.countOfDimensions);
+						interclusterAvg += distances[o1*parameters.countOfObjects + o2];
 					}
 			}
-
+			
 			localAvg /= (cSizes[currentCluster] - 1);
 			interclusterAvg /= cSizes[nearestClusters[currentCluster]];
 			double max = localAvg > interclusterAvg ? localAvg : interclusterAvg;
@@ -64,9 +64,8 @@ private:
 	int* clusteringResults;
 	int* nearestClusters;
 	double* centroids;
-	double* localAvg;
-	double* interclusterAvg;
 	double* objects;
+	double* distances;
 
 
 	double evklidDistance(double* array1, int object1, double* array2, int object2)
@@ -137,6 +136,17 @@ private:
 				}
 			}
 			nearestClusters[c] = minNum;
+		}
+	}
+	void calculateDistanceMatrix()
+	{
+		for (int o1 = 0; o1 < parameters.countOfObjects; o1++)
+		{
+			for (int o2 = o1; o2 < parameters.countOfObjects; o2++)
+			{
+				distances[o1 * parameters.countOfObjects + o2] = evklidDistance(objects, o1*parameters.countOfDimensions, objects, o2*parameters.countOfDimensions);
+				distances[o2 * parameters.countOfObjects + o1] = distances[o1 * parameters.countOfObjects + o2];
+			}
 		}
 	}
 
