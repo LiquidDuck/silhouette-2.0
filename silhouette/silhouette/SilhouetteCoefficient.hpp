@@ -7,15 +7,15 @@ class SilhouetteCoefficient
 public:
 	SilhouetteCoefficient(Parameters _parameters, int* _clusteringResults, double* _objects)
 	{
-		parameters = _parameters; 
+		parameters = _parameters;
 		clusteringResults = _clusteringResults;
 		objects = _objects;
 
 		centroids = new double[parameters.countOfClusters*parameters.countOfDimensions];
-		clusters = new double[parameters.countOfObjects*parameters.countOfDimensions];
 		cSizes = new int[parameters.countOfClusters];
 		localAvg = new double[parameters.countOfObjects];
 		interclusterAvg = new double[parameters.countOfObjects];
+		nearestClusters = new int[parameters.countOfClusters];
 	}
 	~SilhouetteCoefficient()
 	{
@@ -24,67 +24,51 @@ public:
 
 	double calculateSilhouette()
 	{
-		orderClusters();
+		calculateClustersSizes();
 		calculateCentroids();
+		calculateNearestClusters();
 
-		int o = -1;
 		double S = 0;
-		int* nearestClusters = calculateNearestClusters();
-		
-		for (int c = 0; c < parameters.countOfClusters; c++)
+
+		for (int o1 = 0; o1 < parameters.countOfObjects; o1++)
 		{
-			int pcSizes = 0;
-			for (int pc = 0; pc < c; pc++)
-			{
-				pcSizes += cSizes[pc] * parameters.countOfDimensions;
-			}
+			int currentCluster = clusteringResults[o1];
+			double localAvg = 0, interclusterAvg = 0;
 
-			int ncpSizes = 0;
-			for (int pc = 0; pc < nearestClusters[c]; pc++)
+			for (int o2 = 0; o2 < parameters.countOfObjects; o2++)
 			{
-				ncpSizes += cSizes[pc] * parameters.countOfDimensions;
-			}
-			
-			for (int o1 = 0; o1 < cSizes[c]; o1++)
-			{
-				double lAvg = 0, iAvg = 0;
-
-				for (int o2 = 0; o2 < cSizes[c]; o2++)
+				if (clusteringResults[o2] == currentCluster)
 				{
-					lAvg += evklidDistance(clusters, pcSizes + o1*parameters.countOfDimensions, clusters, pcSizes + o2*parameters.countOfDimensions);
+					localAvg += evklidDistance(objects, o1*parameters.countOfDimensions, objects, o2*parameters.countOfDimensions);
 				}
-
-				for (int o2 = 0; o2 < cSizes[nearestClusters[c]]; o2++)
-				{
-					iAvg += evklidDistance(clusters, pcSizes + o1*parameters.countOfDimensions, clusters, ncpSizes + o2*parameters.countOfDimensions);
-				}
-
-				o++;
-				localAvg[o] = lAvg / (cSizes[c] - 1);
-				interclusterAvg[o] = iAvg / cSizes[nearestClusters[c]];
+				else
+					if (clusteringResults[o2] == nearestClusters[currentCluster])
+					{
+						interclusterAvg += evklidDistance(objects, o1*parameters.countOfDimensions, objects, o2*parameters.countOfDimensions);
+					}
 			}
+
+			localAvg /= (cSizes[currentCluster] - 1);
+			interclusterAvg /= cSizes[nearestClusters[currentCluster]];
+			double max = localAvg > interclusterAvg ? localAvg : interclusterAvg;
+			S += (interclusterAvg - localAvg) / max;
+			/*cout << "for " << o + 1 << " objects S is " << (iAvg - lAvg) / max << endl;*/
 		}
 
-		for (int o = 0; o < parameters.countOfObjects; o++)
-		{
-			double max = localAvg[o] > interclusterAvg[o] ? localAvg[o] : interclusterAvg[o];
-			S += (interclusterAvg[o] - localAvg[o]) / max;
-		}
-		
 		return S / parameters.countOfObjects;
 	}
 
 private:
 	Parameters parameters;
-	double* centroids;
-	double* clusters;
 	int* cSizes;
+	int* clusteringResults;
+	int* nearestClusters;
+	double* centroids;
 	double* localAvg;
 	double* interclusterAvg;
 	double* objects;
-	int* clusteringResults;
 
-	
+
 	double evklidDistance(double* array1, int object1, double* array2, int object2)
 	{
 		double sum = 0;
@@ -96,23 +80,15 @@ private:
 
 		return sqrt(sum);
 	}
-	void orderClusters()
+	void calculateClustersSizes()
 	{
-		int elementIndex = 0;
-
 		for (int c = 0; c < parameters.countOfClusters; c++)
 		{
 			int objectsInCluster = 0;
-
 			for (int o = 0; o < parameters.countOfObjects; o++)
 			{
 				if (clusteringResults[o] == c)
 				{
-					for (int d = 0; d < parameters.countOfDimensions; d++)
-					{
-						clusters[elementIndex] = objects[o*parameters.countOfDimensions + d];
-						elementIndex++;
-					}
 					objectsInCluster++;
 				}
 			}
@@ -125,35 +101,23 @@ private:
 		{
 			centroids[i] = 0;
 		}
-		
+
 		for (int c = 0; c < parameters.countOfClusters; c++)
 		{
-			int pcSizes = 0;
-			for (int pc = 0; pc < c; pc++)
+			for (int o = 0; o < parameters.countOfObjects; o++)
 			{
-				pcSizes += cSizes[pc] * parameters.countOfDimensions;
-			}
-
-			for (int o = 0; o < cSizes[c]; o++)
-			{
-				for (int d = 0; d < parameters.countOfDimensions; d++)
+				if (c == clusteringResults[o])
 				{
-					if (cSizes[c] > 0)
+					for (int d = 0; d < parameters.countOfDimensions; d++)
 					{
-						centroids[c*parameters.countOfDimensions + d] += clusters[pcSizes + o*parameters.countOfDimensions + d] / cSizes[c];
-					}
-					else
-					{
-						centroids[c*parameters.countOfDimensions + d] = -1;
+						centroids[c*parameters.countOfDimensions + d] += objects[o*parameters.countOfDimensions + d] / cSizes[c];
 					}
 				}
 			}
 		}
 	}
-	int* calculateNearestClusters()
+	void calculateNearestClusters()
 	{
-		int* nearestClusters = new int[parameters.countOfClusters];
-
 		for (int c = 0; c < parameters.countOfClusters; c++)
 		{
 			int minNum = -1;
@@ -161,7 +125,7 @@ private:
 
 			for (int n = 0; n < parameters.countOfClusters; n++)
 			{
-				if (c != n && cSizes[n] > 0)
+				if (c != n)
 				{
 					double dis = evklidDistance(centroids, c*parameters.countOfDimensions, centroids, n*parameters.countOfDimensions);
 
@@ -172,11 +136,8 @@ private:
 					}
 				}
 			}
-
 			nearestClusters[c] = minNum;
 		}
-
-		return nearestClusters;
 	}
 
 	void writeArray(double* arr, int size, string name)
