@@ -13,7 +13,7 @@ public:
 
 		centroids = new double[parameters.countOfClusters*parameters.countOfDimensions];
 		cSizes = new int[parameters.countOfClusters];
-		nearestClusters = new int[parameters.countOfClusters];
+		nearestClusters = new int[parameters.countOfObjects];
 		distances = new double[parameters.countOfObjects*parameters.countOfObjects];
 	}
 	~SilhouetteCoefficient()
@@ -42,17 +42,16 @@ public:
 					localAvg += distances[o1*parameters.countOfObjects + o2];
 				}
 				else
-					if (clusteringResults[o2] == nearestClusters[currentCluster])
+					if (clusteringResults[o2] == nearestClusters[o1])
 					{
 						interclusterAvg += distances[o1*parameters.countOfObjects + o2];
 					}
 			}
 			
-			localAvg /= (cSizes[currentCluster] - 1);
-			interclusterAvg /= cSizes[nearestClusters[currentCluster]];
+			localAvg /= cSizes[currentCluster] > 1 ? (cSizes[currentCluster] - 1) : 1;
+			interclusterAvg /= cSizes[nearestClusters[o1]];
 			double max = localAvg > interclusterAvg ? localAvg : interclusterAvg;
 			S += (interclusterAvg - localAvg) / max;
-			/*cout << "for " << o + 1 << " objects S is " << (iAvg - lAvg) / max << endl;*/
 		}
 
 		return S / parameters.countOfObjects;
@@ -117,25 +116,35 @@ private:
 	}
 	void calculateNearestClusters()
 	{
-		for (int c = 0; c < parameters.countOfClusters; c++)
+		for (int o1 = 0; o1 < parameters.countOfObjects; o1++)
 		{
-			int minNum = -1;
-			double minDis = -1;
+			int currentCluster = clusteringResults[o1];
+			int nearestCluster;
+			int minAvg = -1;
 
-			for (int n = 0; n < parameters.countOfClusters; n++)
+			for (int c = 0; c < parameters.countOfClusters; c++)
 			{
-				if (c != n)
+				if (currentCluster != c)
 				{
-					double dis = evklidDistance(centroids, c*parameters.countOfDimensions, centroids, n*parameters.countOfDimensions);
+					int interclusterAvg = 0;
 
-					if (dis < minDis || minNum < 0)
+					for (int o2 = 0; o2 < parameters.countOfObjects; o2++)
 					{
-						minDis = dis;
-						minNum = n;
+						if (clusteringResults[o2] == c)
+						{
+							interclusterAvg += distances[o1*parameters.countOfObjects + o2];
+						}
+					}
+					interclusterAvg /= cSizes[c];
+
+					if (interclusterAvg < minAvg || minAvg < 0)
+					{
+						minAvg = interclusterAvg;
+						nearestCluster = c;
 					}
 				}
 			}
-			nearestClusters[c] = minNum;
+			nearestClusters[o1] = nearestCluster;
 		}
 	}
 	void calculateDistanceMatrix()
