@@ -8,6 +8,7 @@ struct Parameters
 	int countOfClusters;
 	int countOfObjects;
 	int countOfDimensions;
+	int countOfThreads;
 	string inputPath;
 	string clusteringResultsPath;
 	string outputPath;
@@ -27,7 +28,7 @@ public:
 
 private:
 	Parameters parameters;
-
+	
 	void parse(int argc, char *argv[])
 	{
 		for (int i = 1; i < argc; i += 2)
@@ -44,7 +45,6 @@ private:
 			{
 				parameters.outputPath = argv[i + 1];
 			}
-
 			if ((string)argv[i] == "-c")
 			{
 				parameters.countOfClusters = atoi(argv[i + 1]);
@@ -56,6 +56,10 @@ private:
 			if ((string)argv[i] == "-d")
 			{
 				parameters.countOfDimensions = atoi(argv[i + 1]);
+			}
+			if ((string)argv[i] == "-t")
+			{
+				parameters.countOfThreads = atoi(argv[i + 1]);
 			}
 		}
 	}

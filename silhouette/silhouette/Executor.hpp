@@ -1,8 +1,9 @@
 #include <fstream>
 #include <string>
 #include <sstream>
-
+#include <omp.h>
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -35,7 +36,13 @@ public:
 		}
 
 		SilhouetteCoefficient silhouette(parameters, clusteringResults, objects); 
+		
+		omp_set_num_threads(parameters.countOfThreads);
+		double time0 = omp_get_wtime();
 		writeResult(silhouette.calculateSilhouette()); 
+		double time = omp_get_wtime() - time0;
+
+		writeLog(time);
 	}
 
 private:
@@ -198,5 +205,39 @@ private:
 		getline(infile, s);
 		infile.close();
 		return s.find(";") != string::npos;
+	}
+
+	void writeLog(double runtime)
+	{
+		ofstream log("log.csv", ios::app);
+
+		log << GetDate() << endl;
+		log << parameters.countOfObjects<<endl;
+		log << parameters.countOfClusters << endl;
+		log << parameters.countOfDimensions << endl;
+		log << parameters.countOfThreads << endl;
+		log << runtime << endl;
+		log << "===================" << endl << endl;
+
+		log.close();
+	}
+	inline string GetDate()
+	{
+		/*
+		time_t rawtime;
+		struct tm timeinfo;
+		char buffer[80];
+		time(&rawtime);
+		localtime_s(&timeinfo, &rawtime);
+		strftime(buffer, 80, "%d-%m-%Y;%H:%M:%S", &timeinfo);
+		std::string str(buffer);
+		*/
+		time_t rawtime;
+		struct tm * timeinfo;
+		char buffer[80];
+		time(&rawtime);
+		timeinfo = localtime(&rawtime);
+		strftime(buffer, 80, "%d-%m-%Y;%H:%M:%S", timeinfo);
+		return  buffer;
 	}
 };

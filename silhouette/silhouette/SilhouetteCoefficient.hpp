@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <omp.h>
 
 class SilhouetteCoefficient
 {
@@ -15,6 +16,9 @@ public:
 		cSizes = new int[parameters.countOfClusters];
 		nearestClusters = new int[parameters.countOfObjects];
 		distances = new double[parameters.countOfObjects*parameters.countOfObjects];
+
+		calculateDistanceMatrix();
+		calculateCentroids();
 	}
 	~SilhouetteCoefficient()
 	{
@@ -23,12 +27,11 @@ public:
 
 	double calculateSilhouette()
 	{
-		calculateDistanceMatrix();
 		calculateClustersSizes();
-		calculateCentroids();
 		calculateNearestClusters();
 
 		double S = 0;
+
 
 		for (int o1 = 0; o1 < parameters.countOfObjects; o1++)
 		{
@@ -82,15 +85,11 @@ private:
 	{
 		for (int c = 0; c < parameters.countOfClusters; c++)
 		{
-			int objectsInCluster = 0;
-			for (int o = 0; o < parameters.countOfObjects; o++)
-			{
-				if (clusteringResults[o] == c)
-				{
-					objectsInCluster++;
-				}
-			}
-			cSizes[c] = objectsInCluster;
+			cSizes[c] = 0;
+		}
+		for (int o = 0; o < parameters.countOfObjects; o++)
+		{
+			cSizes[clusteringResults[o]]++;
 		}
 	}
 	void calculateCentroids()
@@ -116,6 +115,7 @@ private:
 	}
 	void calculateNearestClusters()
 	{
+#pragma omp parallel for schedule(guided)
 		for (int o1 = 0; o1 < parameters.countOfObjects; o1++)
 		{
 			int currentCluster = clusteringResults[o1];
@@ -128,6 +128,7 @@ private:
 				{
 					int interclusterAvg = 0;
 
+#pragma omp simd reduction(+:interclusterAvg)
 					for (int o2 = 0; o2 < parameters.countOfObjects; o2++)
 					{
 						if (clusteringResults[o2] == c)
