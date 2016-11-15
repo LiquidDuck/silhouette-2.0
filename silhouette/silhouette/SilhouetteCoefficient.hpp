@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <omp.h>
+#include <cmath>
 
 class SilhouetteCoefficient
 {
@@ -12,10 +13,15 @@ public:
 		clusteringResults = _clusteringResults;
 		objects = _objects;
 
-		centroids = new double[parameters.countOfClusters*parameters.countOfDimensions];
+		cSizes = (int*)_mm_malloc(parameters.countOfClusters*parameters.countOfDimensions, 64);
+		nearestClusters = (int*)_mm_malloc(parameters.countOfObjects, 64);
+		centroids = (double*)_mm_malloc(parameters.countOfClusters*parameters.countOfDimensions, 64);
+		distances = (double*)_mm_malloc(parameters.countOfObjects*parameters.countOfObjects, 64);
+
+		/*centroids = new double[parameters.countOfClusters*parameters.countOfDimensions];
 		cSizes = new int[parameters.countOfClusters];
 		nearestClusters = new int[parameters.countOfObjects];
-		distances = new double[parameters.countOfObjects*parameters.countOfObjects];
+		distances = new double[parameters.countOfObjects*parameters.countOfObjects];*/
 
 		calculateDistanceMatrix();
 		calculateCentroids();
@@ -32,7 +38,7 @@ public:
 
 		double S = 0;
 
-
+#pragma omp parallel for reduction (+:S)
 		for (int o1 = 0; o1 < parameters.countOfObjects; o1++)
 		{
 			int currentCluster = clusteringResults[o1];
@@ -83,10 +89,12 @@ private:
 	}
 	void calculateClustersSizes()
 	{
+#pragma omp parallel for
 		for (int c = 0; c < parameters.countOfClusters; c++)
 		{
 			cSizes[c] = 0;
 		}
+
 		for (int o = 0; o < parameters.countOfObjects; o++)
 		{
 			cSizes[clusteringResults[o]]++;
@@ -115,7 +123,7 @@ private:
 	}
 	void calculateNearestClusters()
 	{
-#pragma omp parallel for schedule(guided)
+#pragma omp parallel for 
 		for (int o1 = 0; o1 < parameters.countOfObjects; o1++)
 		{
 			int currentCluster = clusteringResults[o1];
@@ -128,7 +136,7 @@ private:
 				{
 					int interclusterAvg = 0;
 
-#pragma omp simd reduction(+:interclusterAvg)
+	#pragma omp simd reduction(+:interclusterAvg) 
 					for (int o2 = 0; o2 < parameters.countOfObjects; o2++)
 					{
 						if (clusteringResults[o2] == c)

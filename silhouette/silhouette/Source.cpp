@@ -8,11 +8,11 @@
 //	return static_cast<Type*>(_mm_malloc(count * sizeof(Type), length));
 //}
 
-void main(int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	AlgorithmParameters algorithmParameters(argc, argv); 
 	Executor executor(algorithmParameters.GetParameters());
 	executor.StartTesting();
-
-	system("pause");
+	
+	return 0;
 }

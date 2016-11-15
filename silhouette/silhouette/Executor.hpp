@@ -42,7 +42,7 @@ public:
 		writeResult(silhouette.calculateSilhouette()); 
 		double time = omp_get_wtime() - time0;
 
-		writeLog(time);
+		writeLog(time * 10000);
 	}
 
 private:
