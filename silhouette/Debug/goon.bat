@@ -1,1 +1,0 @@
-silhouette.exe -i input.csv -r results.csv -o output.csv -c 3 -n 3375 -d 3
