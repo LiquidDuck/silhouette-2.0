@@ -1,0 +1,927 @@
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINING OPTION VALUES:
+  -inline-factor: 100
+  -inline-min-size: 30
+  -inline-max-size: 230
+  -inline-max-total-size: 2000
+  -inline-max-per-routine: disabled
+  -inline-max-per-compile: disabled
+
+
+Begin optimization report for: main(int, char **)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (main(int, char **)) [1] ./silhouette/Source.cpp(12,1)
+  -> (13,48) AlgorithmParameters::~AlgorithmParameters(AlgorithmParameters *)
+  -> INLINE: (13,48) AlgorithmParameters::AlgorithmParameters(AlgorithmParameters *, int, char **)
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(20,2) Parameters::Parameters(Parameters *)
+      -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> ./silhouette/AlgorithmParameters.hpp:(20,2) Parameters::~Parameters(Parameters *)
+    -> ./silhouette/AlgorithmParameters.hpp:(22,3) AlgorithmParameters::parse(AlgorithmParameters *, int, char **)
+  -> INLINE: (14,11) Parameters::~Parameters(Parameters *)
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (14,20) Executor::~Executor(Executor *)
+  -> INLINE: (14,20) Executor::Executor(Executor *, Parameters *)
+    -> INLINE: ./silhouette/Executor.hpp:(13,2) Parameters::Parameters(Parameters *)
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> ./silhouette/Executor.hpp:(13,2) Parameters::~Parameters(Parameters *)
+    -> INLINE: ./silhouette/Executor.hpp:(15,14) Parameters::operator=(Parameters *, const Parameters &)
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::operator=(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::operator=(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::operator=(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (14,40) Parameters::~Parameters(Parameters *)
+  -> INLINE: (14,40) AlgorithmParameters::GetParameters(Parameters *, AlgorithmParameters *)
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(26,10) Parameters::Parameters(Parameters *, const Parameters &)
+      -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (15,11) Executor::StartTesting(Executor *)
+  -> INLINE: (17,2) AlgorithmParameters::~AlgorithmParameters(AlgorithmParameters *)
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(17,7) Parameters::~Parameters(Parameters *)
+      -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (17,2) Executor::~Executor(Executor *)
+    -> INLINE: ./silhouette/Executor.hpp:(20,2) Parameters::~Parameters(Parameters *)
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+===========================================================================
+
+Begin optimization report for: AlgorithmParameters::parse(AlgorithmParameters *, int, char **)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (AlgorithmParameters::parse(AlgorithmParameters *, int, char **)) [2] ./silhouette/AlgorithmParameters.hpp(33,2)
+  -> DELETED: (36,16) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (36,16) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (36,16) std::allocator<char>::allocator(std::allocator<char> *)
+  -> INLINE: (36,24) std::operator==<char, std::char_traits<char>, std::allocator<char>>(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &, const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (36,24) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (36,24) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (38,26) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::operator=(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (40,16) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (40,16) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (40,16) std::allocator<char>::allocator(std::allocator<char> *)
+  -> INLINE: (40,24) std::operator==<char, std::char_traits<char>, std::allocator<char>>(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &, const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (40,24) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (40,24) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (42,38) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::operator=(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (44,16) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (44,16) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (44,16) std::allocator<char>::allocator(std::allocator<char> *)
+  -> INLINE: (44,24) std::operator==<char, std::char_traits<char>, std::allocator<char>>(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &, const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (44,24) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (44,24) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (46,27) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::operator=(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (48,16) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (48,16) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (48,16) std::allocator<char>::allocator(std::allocator<char> *)
+  -> INLINE: (48,24) std::operator==<char, std::char_traits<char>, std::allocator<char>>(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &, const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (48,24) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (48,24) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (50,34) atoi(const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (52,16) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (52,16) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (52,16) std::allocator<char>::allocator(std::allocator<char> *)
+  -> INLINE: (52,24) std::operator==<char, std::char_traits<char>, std::allocator<char>>(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &, const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (52,24) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (52,24) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (54,33) atoi(const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (56,16) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (56,16) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (56,16) std::allocator<char>::allocator(std::allocator<char> *)
+  -> INLINE: (56,24) std::operator==<char, std::char_traits<char>, std::allocator<char>>(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &, const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (56,24) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (56,24) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (58,36) atoi(const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (60,16) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (60,16) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (60,16) std::allocator<char>::allocator(std::allocator<char> *)
+  -> INLINE: (60,24) std::operator==<char, std::char_traits<char>, std::allocator<char>>(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &, const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (60,24) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> DELETED: (60,24) std::allocator<char>::~allocator(std::allocator<char> *)
+  -> INLINE: (62,33) atoi(const char *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at ./silhouette/AlgorithmParameters.hpp(34,3)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15521: loop was not vectorized: explicitly compute the iteration count before executing the loop or try using canonical loop form
+   remark #25018: Total number of lines prefetched=2
+LOOP END
+===========================================================================
+
+Begin optimization report for: AlgorithmParameters::~AlgorithmParameters(AlgorithmParameters *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (AlgorithmParameters::~AlgorithmParameters(AlgorithmParameters *)) [8] ./silhouette/AlgorithmParameters.hpp(17,7)
+  -> INLINE: (17,7) Parameters::~Parameters(Parameters *)
+    -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+===========================================================================
+
+Begin optimization report for: Parameters::~Parameters(Parameters *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Parameters::~Parameters(Parameters *)) [9] ./silhouette/AlgorithmParameters.hpp(6,8)
+  -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+===========================================================================
+
+Begin optimization report for: Executor::~Executor(Executor *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Executor::~Executor(Executor *)) [10] ./silhouette/Executor.hpp(18,2)
+  -> INLINE: (20,2) Parameters::~Parameters(Parameters *)
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+===========================================================================
+
+Begin optimization report for: Executor::StartTesting(Executor *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Executor::StartTesting(Executor *)) [11] ./silhouette/Executor.hpp(23,2)
+  -> (27,3) Executor::readObjects(Executor *, double *)
+  -> INLINE: (29,7) Executor::isFuzzy(Executor *)
+    -> INLINE: (203,19) std::basic_ifstream<char, std::char_traits<char>>::basic_ifstream(std::basic_ifstream<char, std::char_traits<char>> *const, const std::string &, std::ios_base::openmode)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (204,10) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (204,10) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (205,3) std::getline<char, std::char_traits<char>, std::allocator<char>>(std::basic_istream<char, std::char_traits<char>> &, std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (206,10) std::basic_ifstream<char, std::char_traits<char>>::close(std::basic_ifstream<char, std::char_traits<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (207,3) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (207,3) std::basic_ifstream<char, std::char_traits<char>>::~basic_ifstream(std::basic_ifstream<char, std::char_traits<char>> *const)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (207,12) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::find(const std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const char *, std::basic_string<char, std::char_traits<char>, std::allocator<char>>::size_type) const
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (31,4) Executor::readFuzzyResults(Executor *, int *)
+  -> INLINE: (35,4) Executor::readClearResults(Executor *, int *)
+    -> INLINE: (175,19) std::basic_ifstream<char, std::char_traits<char>>::basic_ifstream(std::basic_ifstream<char, std::char_traits<char>> *const, const std::string &, std::ios_base::openmode)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (180,11) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (180,11) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (181,8) std::basic_ios<char, std::char_traits<char>>::operator!(const std::basic_ios<char, std::char_traits<char>> *) const
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (181,9) std::getline<char, std::char_traits<char>, std::allocator<char>>(std::basic_istream<char, std::char_traits<char>> &, std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (181,37) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (183,21) std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::basic_istringstream(std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>> *const, const std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::__string_type &, std::ios_base::openmode)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (186,11) std::basic_ios<char, std::char_traits<char>>::operator void *(const std::basic_ios<char, std::char_traits<char>> *) const
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (192,3) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (192,3) std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::~basic_istringstream(std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>> *const)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (193,10) std::basic_ifstream<char, std::char_traits<char>>::close(std::basic_ifstream<char, std::char_traits<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (193,10) std::basic_ifstream<char, std::char_traits<char>>::~basic_ifstream(std::basic_ifstream<char, std::char_traits<char>> *const)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (38,25) Parameters::~Parameters(Parameters *)
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (38,36) Parameters::~Parameters(Parameters *)
+  -> INLINE: (38,36) Parameters::Parameters(Parameters *, const Parameters &)
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (38,67) SilhouetteCoefficient::~SilhouetteCoefficient(SilhouetteCoefficient *)
+  -> (38,67) SilhouetteCoefficient::SilhouetteCoefficient(SilhouetteCoefficient *, Parameters *, int *, double *)
+  -> INLINE: (42,3) Executor::writeResult(Executor *, double)
+    -> INLINE: (197,20) std::basic_ofstream<char, std::char_traits<char>>::basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *const, const std::string &, std::ios_base::openmode)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (199,11) std::basic_ofstream<char, std::char_traits<char>>::close(std::basic_ofstream<char, std::char_traits<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (199,11) std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *const)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> (42,26) SilhouetteCoefficient::calculateSilhouette(SilhouetteCoefficient *)
+  -> INLINE: (45,3) SilhouetteCoefficient::~SilhouetteCoefficient(SilhouetteCoefficient *)
+    -> INLINE: ./silhouette/SilhouetteCoefficient.hpp:(32,2) Parameters::~Parameters(Parameters *)
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+      -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (45,3) Executor::writeLog(Executor *, double)
+    -> INLINE: (212,27) std::basic_ofstream<char, std::char_traits<char>>::basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *const, const char *, std::ios_base::openmode)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (214,10) Executor::GetDate(std::string *, Executor *)
+      -> DELETED: (241,3) std::allocator<char>::~allocator(std::allocator<char> *)
+      -> DELETED: (241,11) std::allocator<char>::~allocator(std::allocator<char> *)
+      -> DELETED: (241,11) std::allocator<char>::allocator(std::allocator<char> *)
+    -> INLINE: (214,10) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (214,20) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (222,7) std::basic_ofstream<char, std::char_traits<char>>::close(std::basic_ofstream<char, std::char_traits<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: (222,7) std::basic_ofstream<char, std::char_traits<char>>::~basic_ofstream(std::basic_ofstream<char, std::char_traits<char>> *const)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at ./silhouette/Executor.hpp(178,3) inlined into ./silhouette/Executor.hpp(36,4)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15523: loop was not vectorized: cannot compute loop iteration count before executing the loop.
+   remark #25018: Total number of lines prefetched=1
+LOOP END
+===========================================================================
+
+Begin optimization report for: Executor::readObjects(Executor *, double *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Executor::readObjects(Executor *, double *)) [14] ./silhouette/Executor.hpp(106,2)
+  -> INLINE: (107,19) std::basic_ifstream<char, std::char_traits<char>>::basic_ifstream(std::basic_ifstream<char, std::char_traits<char>> *const, const std::string &, std::ios_base::openmode)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (113,11) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (113,11) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (114,8) std::basic_ios<char, std::char_traits<char>>::operator!(const std::basic_ios<char, std::char_traits<char>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (114,9) std::getline<char, std::char_traits<char>, std::allocator<char>>(std::basic_istream<char, std::char_traits<char>> &, std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (114,37) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (116,21) std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::basic_istringstream(std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>> *const, const std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::__string_type &, std::ios_base::openmode)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (118,11) std::basic_ios<char, std::char_traits<char>>::operator void *(const std::basic_ios<char, std::char_traits<char>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (118,11) std::basic_ios<char, std::char_traits<char>>::operator void *(const std::basic_ios<char, std::char_traits<char>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (120,12) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (120,12) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (122,9) std::basic_ios<char, std::char_traits<char>>::operator!(const std::basic_ios<char, std::char_traits<char>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (122,41) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (124,23) std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::basic_istringstream(std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>> *const, const std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::__string_type &, std::ios_base::openmode)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (125,13) std::basic_ios<char, std::char_traits<char>>::operator void *(const std::basic_ios<char, std::char_traits<char>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (131,4) std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::~basic_istringstream(std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>> *const)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (131,4) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (133,3) std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::~basic_istringstream(std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>> *const)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (133,3) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (134,10) std::basic_ifstream<char, std::char_traits<char>>::~basic_ifstream(std::basic_ifstream<char, std::char_traits<char>> *const)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (134,10) std::basic_ifstream<char, std::char_traits<char>>::close(std::basic_ifstream<char, std::char_traits<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at ./silhouette/Executor.hpp(118,4)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15521: loop was not vectorized: explicitly compute the iteration count before executing the loop or try using canonical loop form
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at ./silhouette/Executor.hpp(111,3)
+   remark #15341: loop was not vectorized: nonstandard loop is not a vectorization candidate
+   remark #17102: loop was not parallelized: not a parallelization candidate
+LOOP END
+===========================================================================
+
+Begin optimization report for: Executor::readFuzzyResults(Executor *, int *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (Executor::readFuzzyResults(Executor *, int *)) [28] ./silhouette/Executor.hpp(137,2)
+  -> INLINE: (138,19) std::basic_ifstream<char, std::char_traits<char>>::basic_ifstream(std::basic_ifstream<char, std::char_traits<char>> *const, const std::string &, std::ios_base::openmode)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (143,11) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (143,11) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (144,8) std::basic_ios<char, std::char_traits<char>>::operator!(const std::basic_ios<char, std::char_traits<char>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (144,9) std::getline<char, std::char_traits<char>, std::allocator<char>>(std::basic_istream<char, std::char_traits<char>> &, std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (144,37) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (146,21) std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::basic_istringstream(std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>> *const, const std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::__string_type &, std::ios_base::openmode)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (151,11) std::basic_ios<char, std::char_traits<char>>::operator void *(const std::basic_ios<char, std::char_traits<char>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (151,11) std::basic_ios<char, std::char_traits<char>>::operator void *(const std::basic_ios<char, std::char_traits<char>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (154,12) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (154,12) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (156,9) std::basic_ios<char, std::char_traits<char>>::operator!(const std::basic_ios<char, std::char_traits<char>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (156,41) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (158,23) std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::basic_istringstream(std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>> *const, const std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::__string_type &, std::ios_base::openmode)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (159,13) std::basic_ios<char, std::char_traits<char>>::operator void *(const std::basic_ios<char, std::char_traits<char>> *) const
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (168,4) std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::~basic_istringstream(std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>> *const)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (168,4) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (170,3) std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>>::~basic_istringstream(std::basic_istringstream<char, std::char_traits<char>, std::allocator<char>> *const)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (170,3) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (171,10) std::basic_ifstream<char, std::char_traits<char>>::~basic_ifstream(std::basic_ifstream<char, std::char_traits<char>> *const)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (171,10) std::basic_ifstream<char, std::char_traits<char>>::close(std::basic_ifstream<char, std::char_traits<char>> *)
+     {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at ./silhouette/Executor.hpp(151,4)
+   remark #17102: loop was not parallelized: not a parallelization candidate
+   remark #15521: loop was not vectorized: explicitly compute the iteration count before executing the loop or try using canonical loop form
+LOOP END
+
+
+Non-optimizable loops:
+
+
+LOOP BEGIN at ./silhouette/Executor.hpp(141,3)
+   remark #15341: loop was not vectorized: nonstandard loop is not a vectorization candidate
+   remark #17102: loop was not parallelized: not a parallelization candidate
+LOOP END
+===========================================================================
+
+Begin optimization report for: SilhouetteCoefficient::SilhouetteCoefficient(SilhouetteCoefficient *, Parameters *, int *, double *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (SilhouetteCoefficient::SilhouetteCoefficient(SilhouetteCoefficient *, Parameters *, int *, double *)) [30] ./silhouette/SilhouetteCoefficient.hpp(11,2)
+  -> (10,2) Parameters::~Parameters(Parameters *)
+  -> INLINE: (10,2) Parameters::Parameters(Parameters *)
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (12,14) Parameters::operator=(Parameters *, const Parameters &)
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::operator=(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::operator=(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::operator=(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *, const std::basic_string<char, std::char_traits<char>, std::allocator<char>> &)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (26,3) SilhouetteCoefficient::calculateDistanceMatrix(SilhouetteCoefficient *)
+    -> INLINE: (165,54) SilhouetteCoefficient::evklidDistance(SilhouetteCoefficient *, double *, int, double *, int)
+      -> INLINE: (85,11) std::pow<double, int>(double, int)
+         {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+  -> INLINE: (27,3) SilhouetteCoefficient::calculateCentroids(SilhouetteCoefficient *)
+
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(161,3) inlined into ./silhouette/SilhouetteCoefficient.hpp(27,3)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(163,4) inlined into ./silhouette/SilhouetteCoefficient.hpp(27,3)
+      remark #17104: loop was not parallelized: existence of parallel dependence
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+      remark #25018: Total number of lines prefetched=6
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(83,3) inlined into ./silhouette/SilhouetteCoefficient.hpp(27,3)
+      <Peeled>
+         remark #15301: PEEL LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(83,3) inlined into ./silhouette/SilhouetteCoefficient.hpp(27,3)
+         remark #17108: loop was not parallelized: insufficient computational work
+         remark #15300: LOOP WAS VECTORIZED
+         remark #25018: Total number of lines prefetched=32
+      LOOP END
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(83,3) inlined into ./silhouette/SilhouetteCoefficient.hpp(27,3)
+      <Alternate Alignment Vectorized Loop>
+         remark #25018: Total number of lines prefetched=32
+      LOOP END
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(83,3) inlined into ./silhouette/SilhouetteCoefficient.hpp(27,3)
+      <Remainder>
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(105,3) inlined into ./silhouette/SilhouetteCoefficient.hpp(28,3)
+   remark #25408: memset generated
+   remark #17108: loop was not parallelized: insufficient computational work
+   remark #15398: loop was not vectorized: loop was transformed to memset or memcpy
+LOOP END
+
+LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(110,3) inlined into ./silhouette/SilhouetteCoefficient.hpp(28,3)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(112,4) inlined into ./silhouette/SilhouetteCoefficient.hpp(28,3)
+      remark #17104: loop was not parallelized: existence of parallel dependence
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+      remark #25018: Total number of lines prefetched=6
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(116,6) inlined into ./silhouette/SilhouetteCoefficient.hpp(28,3)
+      <Peeled, Multiversioned v1>
+         remark #15301: PEEL LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(116,6) inlined into ./silhouette/SilhouetteCoefficient.hpp(28,3)
+      <Multiversioned v1>
+         remark #25228: Loop multiversioned for Data Dependence
+         remark #17108: loop was not parallelized: insufficient computational work
+         remark #15300: LOOP WAS VECTORIZED
+         remark #25018: Total number of lines prefetched=16
+      LOOP END
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(116,6) inlined into ./silhouette/SilhouetteCoefficient.hpp(28,3)
+      <Alternate Alignment Vectorized Loop, Multiversioned v1>
+         remark #25018: Total number of lines prefetched=16
+      LOOP END
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(116,6) inlined into ./silhouette/SilhouetteCoefficient.hpp(28,3)
+      <Remainder, Multiversioned v1>
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(116,6) inlined into ./silhouette/SilhouetteCoefficient.hpp(28,3)
+      <Multiversioned v2>
+         remark #17104: loop was not parallelized: existence of parallel dependence
+         remark #15304: loop was not vectorized: non-vectorizable loop instance from multiversioning
+         remark #25439: unrolled with remainder by 2  
+         remark #25018: Total number of lines prefetched=4
+      LOOP END
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(116,6) inlined into ./silhouette/SilhouetteCoefficient.hpp(28,3)
+      <Remainder, Multiversioned v2>
+      LOOP END
+   LOOP END
+LOOP END
+
+    Report from: Code generation optimizations [cg]
+
+./silhouette/SilhouetteCoefficient.hpp(107,4):remark #34026: call to memset implemented as a call to optimized library version
+===========================================================================
+
+Begin optimization report for: SilhouetteCoefficient::~SilhouetteCoefficient(SilhouetteCoefficient *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (SilhouetteCoefficient::~SilhouetteCoefficient(SilhouetteCoefficient *)) [31] ./silhouette/SilhouetteCoefficient.hpp(30,2)
+  -> INLINE: (32,2) Parameters::~Parameters(Parameters *)
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+    -> INLINE: ./silhouette/AlgorithmParameters.hpp:(6,8) std::basic_string<char, std::char_traits<char>, std::allocator<char>>::~basic_string(std::basic_string<char, std::char_traits<char>, std::allocator<char>> *)
+       {{ Inlining of routines from system headers is omitted. Use -qopt-report=3 to view full report. }}
+
+===========================================================================
+
+Begin optimization report for: SilhouetteCoefficient::calculateSilhouette(SilhouetteCoefficient *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (SilhouetteCoefficient::calculateSilhouette(SilhouetteCoefficient *)) [42] ./silhouette/SilhouetteCoefficient.hpp(35,2)
+  -> INLINE: (36,3) SilhouetteCoefficient::calculateClustersSizes(SilhouetteCoefficient *)
+  -> INLINE: (37,3) SilhouetteCoefficient::calculateNearestClusters(SilhouetteCoefficient *)
+
+
+    Report from: OpenMP optimizations [openmp]
+
+OpenMP Construct at ./silhouette/SilhouetteCoefficient.hpp(92,1) inlined into ./silhouette/SilhouetteCoefficient.hpp(37,3)
+   remark #16200: OpenMP DEFINED LOOP WAS PARALLELIZED
+OpenMP Construct at ./silhouette/SilhouetteCoefficient.hpp(126,1) inlined into ./silhouette/SilhouetteCoefficient.hpp(38,3)
+   remark #16200: OpenMP DEFINED LOOP WAS PARALLELIZED
+OpenMP Construct at ./silhouette/SilhouetteCoefficient.hpp(41,1)
+   remark #16200: OpenMP DEFINED LOOP WAS PARALLELIZED
+
+    Report from: Loop nest, Vector & Auto-parallelization optimizations [loop, vec, par]
+
+
+LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(98,3) inlined into ./silhouette/SilhouetteCoefficient.hpp(37,3)
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed FLOW dependence between  line 100 and  line 100
+   remark #25439: unrolled with remainder by 4  
+   remark #25018: Total number of lines prefetched=2
+LOOP END
+
+LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(98,3) inlined into ./silhouette/SilhouetteCoefficient.hpp(37,3)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(93,3) inlined into ./silhouette/SilhouetteCoefficient.hpp(37,3)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #15344: loop was not vectorized: vector dependence prevents vectorization. First dependence is shown below. Use level 5 report for details
+   remark #15346: vector dependence: assumed FLOW dependence between  line 95 and  line 95
+   remark #25439: unrolled with remainder by 2  
+LOOP END
+
+LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(93,3) inlined into ./silhouette/SilhouetteCoefficient.hpp(37,3)
+<Remainder>
+LOOP END
+
+LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(127,3) inlined into ./silhouette/SilhouetteCoefficient.hpp(38,3)
+   remark #17104: loop was not parallelized: existence of parallel dependence
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+
+   LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(133,4) inlined into ./silhouette/SilhouetteCoefficient.hpp(38,3)
+      remark #17104: loop was not parallelized: existence of parallel dependence
+      remark #15542: loop was not vectorized: inner loop was already vectorized
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(140,6) inlined into ./silhouette/SilhouetteCoefficient.hpp(38,3)
+      <Peeled>
+         remark #15301: PEEL LOOP WAS VECTORIZED
+      LOOP END
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(140,6) inlined into ./silhouette/SilhouetteCoefficient.hpp(38,3)
+         remark #17108: loop was not parallelized: insufficient computational work
+         remark #15301: OpenMP SIMD LOOP WAS VECTORIZED
+         remark #25018: Total number of lines prefetched=2
+      LOOP END
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(140,6) inlined into ./silhouette/SilhouetteCoefficient.hpp(38,3)
+      <Alternate Alignment Vectorized Loop>
+         remark #25018: Total number of lines prefetched=2
+      LOOP END
+
+      LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(140,6) inlined into ./silhouette/SilhouetteCoefficient.hpp(38,3)
+      <Remainder>
+         remark #15301: REMAINDER LOOP WAS VECTORIZED
+      LOOP END
+   LOOP END
+LOOP END
+
+LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(42,3)
+   remark #25084: Preprocess Loopnests: Moving Out Store    [ ./silhouette/SilhouetteCoefficient.hpp(63,4) ]
+   remark #17108: loop was not parallelized: insufficient computational work
+   remark #15542: loop was not vectorized: inner loop was already vectorized
+   remark #25018: Total number of lines prefetched=4
+
+   LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(47,4)
+   <Peeled>
+      remark #15301: PEEL LOOP WAS VECTORIZED
+   LOOP END
+
+   LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(47,4)
+      remark #17108: loop was not parallelized: insufficient computational work
+      remark #15300: LOOP WAS VECTORIZED
+      remark #25018: Total number of lines prefetched=2
+   LOOP END
+
+   LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(47,4)
+   <Alternate Alignment Vectorized Loop>
+      remark #25018: Total number of lines prefetched=2
+   LOOP END
+
+   LOOP BEGIN at ./silhouette/SilhouetteCoefficient.hpp(47,4)
+   <Remainder>
+      remark #15301: REMAINDER LOOP WAS VECTORIZED
+   LOOP END
+LOOP END
+===========================================================================
+
+Begin optimization report for: __sti__$E()
+
+    Report from: Interprocedural optimizations [ipo]
+
+INLINE REPORT: (__sti__$E()) [43] <compiler generated>
+
+===========================================================================
+
+Begin optimization report for: AlgorithmParameters::GetParameters(Parameters *, AlgorithmParameters *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (AlgorithmParameters::GetParameters(Parameters *, AlgorithmParameters *)) ./silhouette/AlgorithmParameters.hpp(25,2)
+
+===========================================================================
+
+Begin optimization report for: Parameters::Parameters(Parameters *, const Parameters &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Parameters::Parameters(Parameters *, const Parameters &)) ./silhouette/AlgorithmParameters.hpp(6,8)
+
+===========================================================================
+
+Begin optimization report for: AlgorithmParameters::AlgorithmParameters(AlgorithmParameters *, int, char **)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (AlgorithmParameters::AlgorithmParameters(AlgorithmParameters *, int, char **)) ./silhouette/AlgorithmParameters.hpp(21,2)
+
+===========================================================================
+
+Begin optimization report for: Parameters::Parameters(Parameters *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Parameters::Parameters(Parameters *)) ./silhouette/AlgorithmParameters.hpp(6,8)
+
+===========================================================================
+
+Begin optimization report for: SilhouetteCoefficient::calculateDistanceMatrix(SilhouetteCoefficient *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (SilhouetteCoefficient::calculateDistanceMatrix(SilhouetteCoefficient *)) ./silhouette/SilhouetteCoefficient.hpp(160,2)
+
+===========================================================================
+
+Begin optimization report for: SilhouetteCoefficient::evklidDistance(SilhouetteCoefficient *, double *, int, double *, int)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (SilhouetteCoefficient::evklidDistance(SilhouetteCoefficient *, double *, int, double *, int)) ./silhouette/SilhouetteCoefficient.hpp(80,2)
+
+===========================================================================
+
+Begin optimization report for: SilhouetteCoefficient::calculateNearestClusters(SilhouetteCoefficient *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (SilhouetteCoefficient::calculateNearestClusters(SilhouetteCoefficient *)) ./silhouette/SilhouetteCoefficient.hpp(125,2)
+
+===========================================================================
+
+Begin optimization report for: SilhouetteCoefficient::calculateCentroids(SilhouetteCoefficient *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (SilhouetteCoefficient::calculateCentroids(SilhouetteCoefficient *)) ./silhouette/SilhouetteCoefficient.hpp(104,2)
+
+===========================================================================
+
+Begin optimization report for: SilhouetteCoefficient::calculateClustersSizes(SilhouetteCoefficient *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (SilhouetteCoefficient::calculateClustersSizes(SilhouetteCoefficient *)) ./silhouette/SilhouetteCoefficient.hpp(91,2)
+
+===========================================================================
+
+Begin optimization report for: Executor::writeLog(Executor *, double)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Executor::writeLog(Executor *, double)) ./silhouette/Executor.hpp(211,2)
+
+===========================================================================
+
+Begin optimization report for: Executor::GetDate(std::string *, Executor *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Executor::GetDate(std::string *, Executor *)) ./silhouette/Executor.hpp(225,2)
+
+===========================================================================
+
+Begin optimization report for: Executor::isFuzzy(Executor *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Executor::isFuzzy(Executor *)) ./silhouette/Executor.hpp(202,2)
+
+===========================================================================
+
+Begin optimization report for: Executor::writeResult(Executor *, double)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Executor::writeResult(Executor *, double)) ./silhouette/Executor.hpp(196,2)
+
+===========================================================================
+
+Begin optimization report for: Executor::readClearResults(Executor *, int *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Executor::readClearResults(Executor *, int *)) ./silhouette/Executor.hpp(174,2)
+
+===========================================================================
+
+Begin optimization report for: Executor::Executor(Executor *, Parameters *)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Executor::Executor(Executor *, Parameters *)) ./silhouette/Executor.hpp(14,2)
+
+===========================================================================
+
+Begin optimization report for: Parameters::operator=(Parameters *, const Parameters &)
+
+    Report from: Interprocedural optimizations [ipo]
+
+DEAD STATIC FUNCTION: (Parameters::operator=(Parameters *, const Parameters &)) ./silhouette/AlgorithmParameters.hpp(6,8)
+
+===========================================================================
+
+    Report from: Profile guided optimizations [pgo]
+
+
+
+Profile feedback used a statically estimated profile for the following routines:
+
+  File: <compiler generated>
+        __sti__$E()
+
+  File: ./silhouette/AlgorithmParameters.hpp
+        Parameters::~Parameters(Parameters *)(6)
+        AlgorithmParameters::~AlgorithmParameters(AlgorithmParameters *)(17)
+        AlgorithmParameters::parse(AlgorithmParameters *, int, char **)(33)
+
+  File: ./silhouette/Executor.hpp
+        Executor::~Executor(Executor *)(18)
+        Executor::StartTesting(Executor *)(23)
+        Executor::readObjects(Executor *, double *)(106)
+        Executor::readFuzzyResults(Executor *, int *)(137)
+
+  File: ./silhouette/SilhouetteCoefficient.hpp
+        SilhouetteCoefficient::SilhouetteCoefficient(SilhouetteCoefficient *, Parameters *, int *, double *)(11)
+        SilhouetteCoefficient::~SilhouetteCoefficient(SilhouetteCoefficient *)(30)
+        SilhouetteCoefficient::calculateSilhouette(SilhouetteCoefficient *)(35)
+
+  File: ./silhouette/Source.cpp
+        main(int, char **)(12)
+
+  File: /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/char_traits.h
+        std::char_traits<char>::length(const std::char_traits<char>::char_type *)(261)
+
+  File: /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/bits/ios_base.h
+        std::operator&..0(std::_Ios_Iostate, std::_Ios_Iostate)(156)
+
+  File: /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/ext/atomicity.h
+        __gnu_cxx::__exchange_and_add_dispatch(_Atomic_word *, int)(78)
+
+  File: /usr/linux-k1om-4.7/linux-k1om/../x86_64-k1om-linux/include/c++/4.7.0/iosfwd
+        std::basic_stringbuf<char, std::char_traits<char>, std::allocator<char>>::~basic_stringbuf(std::basic_stringbuf<char, std::char_traits<char>, std::allocator<char>> *)(95)
+
+
+  0 out of 16 routine(s) used training profile data for PGO feedback
+  0 out of 16 routine(s) were unable to use training profile data for PGO feedback
+  0 out of 16 routine(s) were unable to find training profile data for PGO feedback
+  16 out of 16 routine(s) used a static estimate profile for PGO feedback
+
+
+
